@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Link QR Code Generator</title>
+  <script src="./lib/qrcode.min.js"></script>
+  <style>
+    body {
+      background-color: #e5e5e5;
+      padding: 10px;
+    }
+    #qrcode {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    }
+    #url {
+      margin-top: 15px;
+      font-size: 14px;
+      word-break: break-all;
+      max-width: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="qrcode"></div>
+  <div id="url"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
