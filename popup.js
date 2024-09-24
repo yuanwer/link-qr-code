@@ -1,13 +1,13 @@
-// Get local IP address
+// 获取本地 IP 地址
 function getLocalIPAddress(callback) {
-  // Compatible with different browser implementations of RTCPeerConnection
+  // 兼容不同浏览器对 RTCPeerConnection 的实现
   const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
   const pc = new RTCPeerConnection({ iceServers: [] });
   pc.createDataChannel("");
   pc.createOffer().then(offer => pc.setLocalDescription(offer));
   pc.onicecandidate = (ice) => {
     if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-    // Use regular expressions to match IPv4 and IPv6 addresses separately
+    // 使用正则表达式分别匹配 IPv4 和 IPv6 地址
     const ipv4Regex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
     const ipv6Regex = /([a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
     let localIP;
@@ -25,7 +25,7 @@ function getLocalIPAddress(callback) {
   };
 }
 
-// Convert local URL to LAN URL
+// 将本地 URL 转换为局域网 URL
 function convertLocalUrlToLAN(url, localIP) {
   const localUrls = ['127.0.0.1', 'localhost', '[::1]'];
   try {
@@ -40,7 +40,7 @@ function convertLocalUrlToLAN(url, localIP) {
   }
 }
 
-// Main function: Get current tab URL, convert URL, generate QR code
+// 主函数：获取当前标签页 URL，转换 URL，生成二维码
 function generateQRCode() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     let currentUrl = tabs[0].url;
@@ -49,22 +49,22 @@ function generateQRCode() {
       currentUrl = convertLocalUrlToLAN(currentUrl, localIP);
 
       try {
-        // Use qrcode library to generate QR code
+        // 使用 qrcode 库生成二维码
         let qr = qrcode(0, 'M');
         qr.addData(currentUrl);
         qr.make();
 
         let qrCodeImg = qr.createImgTag(5);
 
-        // Insert QR code image into the page
+        // 将二维码图片插入页面
         document.getElementById('qrcode').innerHTML = qrCodeImg;
         document.getElementById('url').innerHTML = currentUrl;
       } catch (error) {
-        document.getElementById('qrcode').innerHTML = "QR code generation failed, please try again.";
+        document.getElementById('qrcode').innerHTML = "二维码生成失败，请重试。";
       }
     });
   });
 }
 
-// Execute the QR code generation function after the page has finished loading
+// 页面加载完成后执行二维码生成函数
 document.addEventListener('DOMContentLoaded', generateQRCode);

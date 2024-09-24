@@ -1,31 +1,22 @@
-# Website QR Code Generator
+# link-qr-code
 
-This is a Chrome browser extension that converts the current webpage link into a QR code.
+## 项目简介
+link-qr-code 是一个 Chrome 扩展程序，可以将当前网页链接转换为二维码，方便开发者在移动设备上快速访问网页。
 
-## Features
+## 功能特性
+- **生成二维码**：将当前网页链接生成二维码。
+- **本地 IP 转换**：将本地 URL 转换为局域网 URL，方便在局域网内访问。
 
-- Automatically generates QR code for the current webpage link
-- Converts local URLs (e.g., localhost, 127.0.0.1) to LAN IP addresses
+## 安装
+1. 克隆此仓库到本地：
+    ```bash
+    git clone https://github.com/yuanwer/link-qr-code.git
+    ```
+2. 打开 Chrome 浏览器，进入扩展程序管理页面 `chrome://extensions/`。
+3. 打开右上角的“开发者模式”。
+4. 点击“加载已解压的扩展程序”，选择克隆的项目文件夹。
 
-## Installation
-
-1. Download this project to your local machine
-2. Open Chrome browser and go to the extensions page (chrome://extensions/)
-3. Enable "Developer mode"
-4. Click "Load unpacked" and select the project folder
-
-## How to Use
-
-1. Click the extension icon in the Chrome toolbar
-2. A pop-up window will display the QR code for the current webpage link
-3. Scan the QR code with your mobile device to access the webpage
-
-## Technical Implementation
-
-- Uses Chrome extension API to get the current tab URL
-- Utilizes WebRTC technology to obtain LAN IP address
-- Uses qrcode.js library to generate QR codes
-
-## License
-
-This project is licensed under the MIT License
+## 使用方法
+1. 安装扩展程序后，点击浏览器右上角的扩展程序图标。
+2. 扩展程序会自动获取当前标签页的 URL，并生成对应的二维码。
+3. 使用手机扫描二维码，即可在移动设备上打开当前网页。

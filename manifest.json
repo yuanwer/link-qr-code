@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Website Link QR Code Generator",
+  "name": "link-qr-code",
   "version": "1.0",
   "description": "Convert current webpage link to QR code",
   "permissions": ["activeTab"],
